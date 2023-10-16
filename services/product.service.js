@@ -1,11 +1,15 @@
 const { faker } = require('@faker-js/faker');
 const boom = require('@hapi/boom');
 
+
+const { models   } = require('../libs/sequelize');
+
 class ProductsService {
 
   constructor(){
     this.products = [];
     this.generate();
+
   }
 
   generate() {
@@ -22,41 +26,44 @@ class ProductsService {
   }
 
   async create(data) {
-    const newProduct = {
-      id: faker.datatype.uuid(),
-      ...data
-    }
-    this.products.push(newProduct);
-    return newProduct;
+
+    const newProduct = await models.Product.create(data);
+      return newProduct;
   }
 
-  find() {
-    return this.products;
-  }
+  async find() {
+    const rta = await models.Product.findAll({
+      include: ['category'],
+      raw: true
+    });
+    return rta;
 
+  }
   async findOne(id) {
-    const product = this.products.find(item => item.id === id);
-    if (!product) {
-      throw boom.notFound('product not found');
-    }
-    if (product.isBlock) {
-      throw boom.conflict('product is block');
-    }
-    return product;
+    const rta =await models.Product.findOne(id);
+    return rta;
+
   }
 
   async update(id, changes) {
-    const index = this.products.findIndex(item => item.id === id);
-    if (index === -1) {
-      throw boom.notFound('product not found');
+    const query = 'UPDATE task SET title = $1, completed = $2 WHERE id = $3 RETURNING *';
+    const values = [changes.title, changes.completed, id];
+
+    const result = await this.pool.query(query, values);
+
+    if (result.rows.length === 0) {
+      throw boom.notFound('Product not found');
     }
-    const product = this.products[index];
-    this.products[index] = {
-      ...product,
-      ...changes
-    };
-    return this.products[index];
+
+    const updatedProduct = result.rows[0];
+
+    if (updatedProduct.isBlock) {
+      throw boom.conflict('Product is blocked');
+    }
+
+    return updatedProduct;
   }
+
 
   async delete(id) {
     const index = this.products.findIndex(item => item.id === id);

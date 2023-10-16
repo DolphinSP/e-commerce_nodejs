@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Pedidos</title>
+</head>
+<body>
+    <h1>Listado de Pedidos</h1>
+    <ul>
+        {{#each orders}}
+            <li>
+                <h2>Pedido #{{this.id}}</h2>
+                <p>Cliente: {{this.customer.name}}</p>
+                <p>Total: ${{this.total}}</p>
+                <h3>Productos:</h3>
+                <ul>
+                    {{#each this.items}}
+                        <li>{{this.name}} - Cantidad: {{this.OrderProduct.amount}}</li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+    </ul>
+</body>
+</html>

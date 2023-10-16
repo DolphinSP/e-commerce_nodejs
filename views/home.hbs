@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categorías</title>
+</head>
+<body>
+    <h1>Listado de Categorías</h1>
+    <ul>
+        {{#each categories}}
+            <li>
+                <h2>{{this.name}}</h2>
+                <img src="{{this.image}}" alt="{{this.name}}">
+            </li>
+        {{/each}}
+    </ul>
+</body>
+</html>
