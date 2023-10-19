@@ -7,7 +7,7 @@ const sequelize = new Sequelize(
   config.db.pass,
   {
     host: config.db.host,
-    dialect: "mysql",
+    dialect: config.db.dialect,
     port: config.db.port,
     logging: false,
   }
