@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 app.listen(config.app.port, async () => {
   try {
-    await sequelize.sync();
+    await sequelize.sync({ force: true });
     console.log(`Server running on port ${config.app.port}`);
   } catch (error) {
     console.error("Error:", error.message);

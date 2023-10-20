@@ -1,6 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db/sequelize.config.js";
 import Address from "./address.model.js";
+import Order from "./order.model.js";
 
 class User extends Model {}
 
@@ -38,6 +39,11 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    role: {
+      type: DataTypes.ENUM("user", "admin"),
+      defaultValue: "user",
+      allowNull: false,
+    },
     avatar: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -58,6 +64,18 @@ User.hasMany(Address, {
 Address.belongsTo(User, {
   foreignKey: "user_id",
   targetKey: "user_id",
+  as: "user",
+});
+
+User.hasMany(Order, {
+  foreignKey: "user_id",
+  sourceKey: "user_id",
+  as: "orders",
+});
+
+Order.belongsTo(User, {
+  foreignKey: "user_id",
+  sourceKey: "user_id",
   as: "user",
 });
 
