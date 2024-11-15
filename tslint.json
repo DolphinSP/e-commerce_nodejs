@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "no-console": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**",
+      "build/**"
+    ]
+  }
+}
