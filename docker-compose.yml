@@ -1,0 +1,17 @@
+
+version: '3.8'
+
+services:
+  db:
+    image: mongo:6.0
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: ecommerce_db
+    volumes:
+      - ./mongo_data:/data/db
+
+volumes:
+  mongo_data:
+    external: true

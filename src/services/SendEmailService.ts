@@ -1,4 +1,4 @@
-import { Service } from 'typedi'
+/* import { Service } from 'typedi'
 import nodemailer, { Transporter } from 'nodemailer'
 import SMTPTransport from 'nodemailer/lib/smtp-transport'
 
@@ -64,3 +64,4 @@ export class SendEmailService {
     })
   }
 }
+ */
