@@ -44,6 +44,7 @@
     "@types/jest": "^29.2.5",
     "@types/jsonwebtoken": "^9.0.4",
     "@types/mongoose": "^5.11.97",
+    "@types/node": "^22.9.0",
     "@types/nodemailer": "^6.4.13",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
@@ -58,7 +59,7 @@
     "rimraf": "^4.0.4",
     "ts-jest": "^29.0.5",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.0.2"
+    "typescript": "^5.6.3"
   },
   "lint-staged": {
     "*.(js|ts)": [
