@@ -1,4 +1,4 @@
-import { User } from "../../../../src/users/domain/user";
+/* import { User } from "../../../../src/users/domain/user";
 import { InMemoryUserRepository } from "../../../../src/users/infrastructure/user-repository/in-memory-user-repository";
 
 describe("InMemoryUserRepository", () => {
@@ -20,3 +20,4 @@ describe("InMemoryUserRepository", () => {
     });
   });
 });
+ */

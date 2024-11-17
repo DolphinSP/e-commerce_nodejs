@@ -1,4 +1,4 @@
-import { Service } from "typedi";
+/* import { Service } from "typedi";
 
 import { EmailDetails, SendEmailService } from "../services/SendEmailService";
 
@@ -17,4 +17,4 @@ export class EmailGateway {
       return `error trying to send email from ${emailPayload.from} to ${emailPayload.to}`;
     }
   }
-}
+} */
