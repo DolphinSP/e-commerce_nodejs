@@ -7,8 +7,8 @@ import express from "express";
 import { Container } from "typedi";
 
 import { connectMongoDB } from "./config";
-import authController from "./controllers/authController";
 import PartnerModel from "./db/models/partner";
+import { Routes } from "./routes";
 
 dotenv.config();
 
@@ -30,7 +30,7 @@ async function createServer() {
     console.log(`Server is running on http://localhost:${port}`);
   });
 
-  app.use("/api", authController);
+  app.use("/api", Routes());
 }
 
 async function main() {

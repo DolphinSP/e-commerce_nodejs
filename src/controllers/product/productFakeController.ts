@@ -1,15 +1,9 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 
-import { ProductModel } from "../db/models/product";
-import { seedProduct } from "../db/seeds";
+import { ProductModel } from "../../db/models/product";
+import { seedProduct } from "../../db/seeds";
 
-const router = express.Router();
-
-router.get("/test", (req: Request, res: Response) => {
-  res.send("Hello World testeo");
-});
-
-router.get("/product-fake", async (req: Request, res: Response) => {
+export const GetProductFake = async (req: Request, res: Response) => {
   try {
     const ReadProductFake = await ProductModel.find();
     res.status(200).json({ product: ReadProductFake });
@@ -17,9 +11,9 @@ router.get("/product-fake", async (req: Request, res: Response) => {
     console.log(error);
     res.status(400).json({ error: "Products not found" });
   }
-});
+};
 
-router.post("/product-fake", async (req: Request, res: Response) => {
+export const PostProductFake = async (req: Request, res: Response) => {
   try {
     const InsertProductFake = await ProductModel.insertMany(seedProduct());
 
@@ -28,9 +22,9 @@ router.post("/product-fake", async (req: Request, res: Response) => {
     console.log(error);
     res.status(400).json({ error: "Products not found" });
   }
-});
+};
 
-router.delete("/product-fake", async (req: Request, res: Response) => {
+export const DeleteProductFake = async (req: Request, res: Response) => {
   try {
     const DeleteProductFake = await ProductModel.deleteMany();
 
@@ -39,6 +33,4 @@ router.delete("/product-fake", async (req: Request, res: Response) => {
     console.log(error);
     res.status(400).json({ error: "Products not found" });
   }
-});
-
-export default router;
+};
