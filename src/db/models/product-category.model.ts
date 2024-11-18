@@ -4,6 +4,7 @@ import mongoose, { Document, Schema } from "mongoose";
 export type ProductCategory = {
   ProductCategoryName: string;
   Description: string;
+  Image: string;
 };
 
 // Let's extend Document using our ProductCategory type
@@ -15,6 +16,10 @@ const productCategorySchema: Schema = new Schema({
     required: true,
   },
   Description: {
+    type: String,
+    required: false,
+  },
+  Image: {
     type: String,
     required: false,
   },
