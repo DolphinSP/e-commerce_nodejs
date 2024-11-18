@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
-import { ProductModel } from "../../db/models/product";
-import { seedProduct } from "../../db/seeds";
+import { ProductModel } from "../../../db/models/product.model";
+import { seedProduct } from "../../../db/seeds";
 
 export const GetProductFake = async (req: Request, res: Response) => {
   try {
