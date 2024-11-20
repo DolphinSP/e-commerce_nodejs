@@ -1,15 +1,11 @@
 import { Router } from "express";
-
-import {
-  DeleteProductFake,
-  GetProductFake,
-  PostProductFake,
-} from "./productFakeController";
+import { ProductController } from "./productController";
 
 const router = Router();
+const productController=new ProductController();
 
-router.get("/", GetProductFake);
-router.post("/", PostProductFake);
-router.delete("/", DeleteProductFake);
+router.get("/", (req,res)=> productController.GetProductFake(req,res));
+router.post("/", (req,res)=> productController.PostProductFake(req,res));
+router.delete("/", (req,res)=> productController.DeleteProductFake(req,res));
 
 export const ProductRoutes = router;

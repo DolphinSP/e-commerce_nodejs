@@ -1,4 +1,9 @@
-export const seedProduct = () => {
+export interface ISeedProduct {
+  ProductName: string;
+  Price: number;
+}
+
+export const seedProduct:()=>ISeedProduct[] = () => {
   const products = [
     { ProductName: "Procesador Intel Core i7-12700K", Price: 329.99 },
     { ProductName: "Tarjeta Gráfica NVIDIA GeForce RTX 3060", Price: 399.99 },
