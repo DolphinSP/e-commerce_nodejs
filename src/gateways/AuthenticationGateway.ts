@@ -1,7 +1,7 @@
 import { Service } from "typedi";
 
-import { Partner } from "../db/models/partner";
-import { PartnerRepository } from "../repositories/PartnerRepository";
+import { UserModel } from "../db/models/userModel";
+import { UserRepository } from "../repositories/UserRepository";
 import { HashService } from "../services/HashService";
 import { TokenService } from "../services/TokenService";
 
@@ -10,7 +10,7 @@ export class AuthenticationGateway {
   constructor(
     private tokenService: TokenService,
     private hashService: HashService,
-    private partnerRepository: PartnerRepository
+    private partnerRepository: UserRepository
   ) {}
 
   async register(
@@ -23,7 +23,7 @@ export class AuthenticationGateway {
       username,
       email,
       password: hashedPassword,
-    } as Partner);
+    } as UserModel);
     return this.tokenService.generateToken({ email });
   }
 
