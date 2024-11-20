@@ -1,38 +1,37 @@
 // models/partner.ts
 
-import mongoose, { Document, Schema } from 'mongoose'
+import mongoose, { Document, Schema } from "mongoose";
 
 export type Partner = {
   name: string;
   username: string;
   email: string;
   password: string;
-}
+};
 
 // Let's extend Document using our Partner type
-export interface IPartner extends Document, Partner {
-}
+export interface IPartner extends Document, Partner {}
 
 const partnerSchema: Schema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   username: {
     type: String,
     required: false,
-    unique: true
+    unique: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const PartnerModel = mongoose.model<IPartner>('Partner', partnerSchema)
-export default PartnerModel
+const PartnerModel = mongoose.model<IPartner>("Partner", partnerSchema);
+export default PartnerModel;

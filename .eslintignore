@@ -1,0 +1,10 @@
+# Carpetas y archivos a ignorar
+dist/
+node_modules/
+*.config.js
+.env
+.env.example
+mongo_data/
+.husky/
+.eslintrc.js
+

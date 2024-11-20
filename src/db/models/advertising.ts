@@ -1,21 +1,20 @@
-import mongoose, { Document, Schema } from 'mongoose'
+import mongoose, { Document, Schema } from "mongoose";
 
 export type Advertising = {
-  title: string,
-  description: string,
-  location: string,
-  phoneNumber: string,
-  promoteImage: string,
-  imageList: string[]
-}
+  title: string;
+  description: string;
+  location: string;
+  phoneNumber: string;
+  promoteImage: string;
+  imageList: string[];
+};
 
-export interface IAdvertising extends Document, Advertising {
-}
+export interface IAdvertising extends Document, Advertising {}
 
 const advertisingSchema: Schema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
@@ -24,33 +23,36 @@ const advertisingSchema: Schema = new Schema({
   },
   location: {
     type: String,
-    required: true
+    required: true,
   },
   phoneNumber: {
     type: String,
-    required: true
+    required: true,
   },
   username: {
     type: String,
     required: false,
-    unique: true
+    unique: true,
   },
   promoteImage: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   imageList: {
     type: [String],
-    required: true
-  },
-  // Relationship with the Partner collection. 1 ad belongs to a partner. 
-  partner: {
-    type: Schema.Types.ObjectId,
-    ref: 'Partner',
     required: true,
   },
-})
+  // Relationship with the Partner collection. 1 ad belongs to a partner.
+  partner: {
+    type: Schema.Types.ObjectId,
+    ref: "Partner",
+    required: true,
+  },
+});
 
-const AdvertisingModel = mongoose.model<IAdvertising>('Advertising', advertisingSchema)
-export default AdvertisingModel
+const AdvertisingModel = mongoose.model<IAdvertising>(
+  "Advertising",
+  advertisingSchema
+);
+export default AdvertisingModel;
