@@ -1,4 +1,4 @@
-/* import { Service } from 'typedi'
+ import { Service } from 'typedi'
 
 @Service()
 export class ValidationService {
@@ -11,4 +11,4 @@ export class ValidationService {
     const colombianPhoneNumberPattern = /^(3[0-9]{9})$/;
     return colombianPhoneNumberPattern.test(phoneNumber);
   }
-} */
+}

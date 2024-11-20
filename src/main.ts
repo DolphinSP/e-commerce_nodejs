@@ -7,7 +7,7 @@ import express from "express";
 import { Container } from "typedi";
 
 import { connectMongoDB } from "./config";
-import PartnerModel from "./db/models/partner";
+import UserModel from "./db/models/userModel";
 import { Routes } from "./routes";
 
 dotenv.config();
@@ -17,7 +17,7 @@ function addDependencies() {
   console.log(
     "📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕📕Registering partern Model dependency"
   );
-  Container.set("PartnerModel", PartnerModel);
+  Container.set("UserModel", UserModel);
 }
 
 async function createServer() {
@@ -25,6 +25,17 @@ async function createServer() {
   app.use(cors());
   app.use(json());
 
+  // Health check route
+  app.get('/', (req, res) => {
+    res.send(`
+      <html>
+        <body>
+          <h1>Service is running</h1>
+          <p>Status: <span style="color: green;">OK</span></p>
+        </body>
+      </html>
+    `)
+  })
   const port = process.env.PORT || 4400;
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

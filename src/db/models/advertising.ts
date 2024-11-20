@@ -43,7 +43,7 @@ const advertisingSchema: Schema = new Schema({
     type: [String],
     required: true,
   },
-  // Relationship with the Partner collection. 1 ad belongs to a partner.
+  // Relationship with the UserModel collection. 1 ad belongs to a partner.
   partner: {
     type: Schema.Types.ObjectId,
     ref: "Partner",
