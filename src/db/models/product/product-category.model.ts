@@ -14,11 +14,11 @@ export interface ICategory extends Document, Category {}
 const categorySchema: Schema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, "El campo name es obligatorio"],
   },
   description: {
     type: String,
-    required: true,
+    required: [true,"El campo `description` es obligatorio"],
   },
   createdAt:{
     type: Date,

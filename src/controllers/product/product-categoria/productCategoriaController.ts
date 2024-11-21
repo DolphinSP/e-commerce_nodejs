@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
-import { seedProduct } from "../../../db/seeds";
 import { BaseController } from "../../baseController";
+import { seedProductCategory } from "../../../db/seeds/product/seedProductCategory";
+import { Category } from "../../../db/models/product/product-category.model";
+import { isValidObjectId } from "mongoose";
 
 export class ProductCategoryController extends BaseController{
 
@@ -19,10 +21,13 @@ export class ProductCategoryController extends BaseController{
 
     async GetProductCategoryOne(req: Request, res: Response) {
 
+          const uuid=req.params.id;
+          if(!isValidObjectId(uuid)) return res.status(400).json({error:'uuid invalid or not found'});
+
       try {
-          console.log(req.params.id);
+          const ReadProductCategoryOne = await this.categoryRepository.getOne(uuid);
+          console.log(ReadProductCategoryOne);
           
-          const ReadProductCategoryOne = await this.categoryRepository.getOne(req.params.id);
           if(!ReadProductCategoryOne) return res.status(400).json({error:'Category not found'});
           res.status(200).json({ categoryOne: ReadProductCategoryOne });
         } catch (error) {
@@ -31,26 +36,77 @@ export class ProductCategoryController extends BaseController{
         }
   }
 
-    async PostProductFake (req: Request, res: Response){
+    async PostProductCategoryAll (req: Request, res: Response){
 
         try {
-          const InsertProductFake = await this.productRepository.postProduct(seedProduct);
-          if(!InsertProductFake) return res.status(400).json({error:'Product not found'});
+          const InsertProductCategoryAll = await this.categoryRepository.postCategoryAll(seedProductCategory);
+          if(!InsertProductCategoryAll) return res.status(400).json({error:'Product not found'});
       
-          res.status(200).json({ product: InsertProductFake });
+          res.status(200).json({ category: InsertProductCategoryAll });
         } catch (error) {
           console.log(error);
           res.status(500).json({ error: "Server Error" });
         }
     };
 
-    async DeleteProductFake (req: Request, res: Response)  {
+    async PostProductCategoryOne (req: Request, res: Response){
+
+      const body:Category= req.body;
+      console.log({categorydata:body});
       
+      if(!body || Object.keys(body).length===0) return res.status(400).json({error: "data not found - category"});
+
       try {
-        const DeleteProductFake = await this.productRepository.deleteProductAll();
-        if(!DeleteProductFake) return res.status(400).json({error:'Product not found'});
+        const InsertProductCategoryOne = await this.categoryRepository.postCategoryOne(body);
+        if(!InsertProductCategoryOne) return res.status(400).json({error:'Product not found'});
     
-        res.status(200).json({ product: DeleteProductFake });
+        res.status(200).json({ category: InsertProductCategoryOne });
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Server Error" });
+      }
+  };
+
+    async PutProductCategoryOne(req: Request, res: Response) {
+
+      const uuid=req.params.id;
+      const body:Category=req.body;
+      if(!isValidObjectId(uuid)) return res.status(400).json({error:'uuid invalid or not found'});
+
+      try {
+          const PutProductCategory = await this.categoryRepository.updateCategoryOne(uuid,body);
+          if(!PutProductCategory ) return res.status(400).json({error:'Category not found'});
+          res.status(200).json({ Category: PutProductCategory  });
+        } catch (error) {
+          console.log(error);
+          res.status(500).json({ error: "Server Error" });
+        }
+      }
+
+    async DeleteProductAll (req: Request, res: Response)  {
+
+      try {
+        const DeleteProductCategoryAll = await this.categoryRepository.deleteCategoryAll()
+        if(!DeleteProductCategoryAll) return res.status(400).json({error:'Product not found'});
+    
+        res.status(200).json({ category: DeleteProductCategoryAll });
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Server Error" });
+      }
+
+    }
+
+    async DeleteProductOne (req: Request, res: Response)  {
+      
+      const uuid=req.params.id;
+      if(!isValidObjectId(uuid)) return res.status(400).json({error:'uuid invalid or not found'});
+
+      try {
+        const DeleteProductCategoryAll = await this.categoryRepository.deleteCategoryOne(uuid)
+        if(!DeleteProductCategoryAll) return res.status(400).json({error:'Product not found'});
+    
+        res.status(200).json({ category: DeleteProductCategoryAll });
       } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Server Error" });

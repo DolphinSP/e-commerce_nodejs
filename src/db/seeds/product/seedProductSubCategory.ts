@@ -1,0 +1,148 @@
+import { SubCategory } from "../../models/product/product-sub-category.model";
+
+export const seedProductSubCategory: () => SubCategory[] = () => {
+  const seedSubCategory = [
+    {
+      name: "Smartphones",
+      description: "Teléfonos inteligentes de última generación",
+      parentCategory: "Electrónica",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Laptops",
+      description: "Portátiles para trabajo, estudio y gaming",
+      parentCategory: "Electrónica",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Lavadoras",
+      description: "Máquinas para el lavado de ropa",
+      parentCategory: "Electrodomésticos",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Hornos",
+      description: "Hornos eléctricos y de microondas",
+      parentCategory: "Electrodomésticos",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Ropa de Hombre",
+      description: "Ropa formal y casual para hombres",
+      parentCategory: "Moda",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Ropa de Mujer",
+      description: "Vestimenta para mujeres, incluyendo accesorios",
+      parentCategory: "Moda",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Bicicletas",
+      description: "Bicicletas para deporte y recreación",
+      parentCategory: "Deporte",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Equipo de Gimnasio",
+      description: "Pesas, máquinas y accesorios para ejercicios",
+      parentCategory: "Deporte",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Sofás",
+      description: "Sofás y muebles para sala",
+      parentCategory: "Hogar y Muebles",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Decoración de Interiores",
+      description: "Artículos decorativos para el hogar",
+      parentCategory: "Hogar y Muebles",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Videojuegos",
+      description: "Juegos para consolas y PC",
+      parentCategory: "Juguetes y Juegos",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Juegos de Mesa",
+      description: "Juegos para entretenimiento familiar y social",
+      parentCategory: "Juguetes y Juegos",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Maquillaje",
+      description: "Productos de belleza para rostro, ojos y labios",
+      parentCategory: "Belleza y Cuidado Personal",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Cuidado del Cabello",
+      description: "Shampoos, acondicionadores y tratamientos",
+      parentCategory: "Belleza y Cuidado Personal",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Suplementos",
+      description: "Vitaminas y suplementos para la salud",
+      parentCategory: "Salud y Bienestar",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Artículos Médicos",
+      description: "Equipos médicos y productos de cuidado personal",
+      parentCategory: "Salud y Bienestar",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Repuestos para Autos",
+      description: "Piezas y repuestos para vehículos",
+      parentCategory: "Automotriz",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Herramientas para Autos",
+      description: "Herramientas para mantenimiento y reparación",
+      parentCategory: "Automotriz",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Material de Oficina",
+      description: "Papelería y suministros para oficinas",
+      parentCategory: "Libros y Papelería",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+    {
+      name: "Libros Educativos",
+      description: "Libros para estudio y desarrollo personal",
+      parentCategory: "Libros y Papelería",
+      createdAt: new Date(Date.now()),
+      updatedAt: new Date(Date.now()),
+    },
+  ];
+
+  return seedSubCategory;
+};

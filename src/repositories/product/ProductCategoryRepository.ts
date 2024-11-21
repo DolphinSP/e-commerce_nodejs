@@ -23,12 +23,14 @@ export class CategoryRepository {
     return await CategoryModel.create(category);
   }
 
-  async updateCategoryOne(uuid:any){
-    return await CategoryModel.updateOne(uuid);
+  async updateCategoryOne(uuid:string,updateData:Category){
+    const filter={_id:uuid};
+    return await CategoryModel.updateOne(filter,updateData);
   }
 
-  async deleteCategoryOne(uuid:any){
-    return await CategoryModel.deleteOne(uuid);
+  async deleteCategoryOne(uuid:string){
+    const filter={_id:uuid}
+    return await CategoryModel.deleteOne(filter);
   }
 
   async deleteCategoryAll(){
