@@ -22,12 +22,12 @@ const categorySchema: Schema = new Schema({
   },
   createdAt:{
     type: Date,
-    required: true,
+    required: false,
     default:Date.now,
   },
   updatedAt:{
     type: Date,
-    required: true,
+    required: false,
     default:Date.now,
   }
 });

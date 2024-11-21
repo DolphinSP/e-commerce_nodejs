@@ -5,6 +5,7 @@ import {TokenService} from "../services/TokenService";
 import {ValidationService} from "../services/ValidationService";
 import {SendEmailService} from "../services/SendEmailService";
 import { ProductRepository } from '../repositories/ProductRepository';
+import { CategoryRepository } from '../repositories/product/ProductCategoryRepository';
 
 
 export class BaseController {
@@ -15,6 +16,7 @@ export class BaseController {
     protected sendEmailService: SendEmailService
 
     protected productRepository:ProductRepository
+    protected categoryRepository:CategoryRepository
 
     constructor() {
         this.userRepository = Container.get(UserRepository)
@@ -24,5 +26,6 @@ export class BaseController {
         this.sendEmailService = Container.get(SendEmailService)
 
         this.productRepository=Container.get(ProductRepository)
+        this.categoryRepository=Container.get(CategoryRepository)
     }
 }

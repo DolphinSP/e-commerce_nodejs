@@ -1,15 +1,16 @@
 import { Router } from "express";
+import { DeleteProductCategoryFake, GetProductCategoryFake, PostProductCategoryFake } from "./productCategoriaFakeController";
+import { ProductCategoryController } from "./productCategoriaController";
 
-import {
-  DeleteProductCategoryFake,
-  GetProductCategoryFake,
-  PostProductCategoryFake,
-} from "./productCategoriaController";
 
 const router = Router();
+const productCategoryController= new ProductCategoryController();
 
-router.get("/", GetProductCategoryFake);
-router.post("/", PostProductCategoryFake);
-router.delete("/", DeleteProductCategoryFake);
+router.get("/fake", GetProductCategoryFake);
+router.post("/fake", PostProductCategoryFake);
+router.delete("/fake", DeleteProductCategoryFake);
+router.get("/",(req,res)=>productCategoryController.GetProductCategoryAll);
+router.get("/:id",(req,res)=>productCategoryController.GetProductCategoryOne);
+
 
 export const ProductCategoryRoutes = router;

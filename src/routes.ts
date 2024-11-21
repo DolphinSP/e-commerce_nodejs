@@ -8,7 +8,7 @@ export const Routes = () => {
   const router = Router();
 
   router.use("/product-fake", ProductRoutes);
-  router.use("/product-category-fake", ProductCategoryRoutes);
+  router.use("/product-category", ProductCategoryRoutes);
   router.use("/users",UserRoute)
   return router;
 };
