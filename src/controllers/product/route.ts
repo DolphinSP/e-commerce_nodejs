@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { ProductRoutes } from "./product-fake/route";
-import { ProductCategoryRoutes } from "./product-categoria/route";
+import { ProductCategoryRoutes } from "./product-category/route";
+import { ProductSubCategoryRoutes } from "./product-sub-category/route";
+import { ProductRoutes } from "./product/route";
 
 export const ProductMainRoutes = () => {
   const router = Router();
 
-  router.use("/",ProductRoutes );
+  router.use("/",ProductRoutes);
   router.use("/category",ProductCategoryRoutes)
+  router.use("/sub-category",ProductSubCategoryRoutes)
   return router;
 };

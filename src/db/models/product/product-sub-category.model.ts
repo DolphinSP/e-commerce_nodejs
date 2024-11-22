@@ -23,7 +23,8 @@ const subCategorySchema: Schema = new Schema({
   },
   parentCategory:{
     type:Schema.Types.ObjectId,
-    ref:"Category"
+    ref:"Category",
+    require:true
   },
   createdAt:{
     type: Date,

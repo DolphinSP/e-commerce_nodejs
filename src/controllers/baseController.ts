@@ -4,8 +4,8 @@ import {HashService} from "../services/HashService";
 import {TokenService} from "../services/TokenService";
 import {ValidationService} from "../services/ValidationService";
 import {SendEmailService} from "../services/SendEmailService";
-import { ProductRepository } from '../repositories/ProductRepository';
-import { CategoryRepository } from '../repositories/product/ProductCategoryRepository';
+
+import { CategoryRepository, ProductRepository, SubCategoryRepository } from '../repositories';
 
 
 export class BaseController {
@@ -15,8 +15,9 @@ export class BaseController {
     protected validationService: ValidationService
     protected sendEmailService: SendEmailService
 
-    protected productRepository:ProductRepository
     protected categoryRepository:CategoryRepository
+    protected subCategoryRepository:SubCategoryRepository
+    protected productRepository:ProductRepository
 
     constructor() {
         this.userRepository = Container.get(UserRepository)
@@ -27,5 +28,6 @@ export class BaseController {
 
         this.productRepository=Container.get(ProductRepository)
         this.categoryRepository=Container.get(CategoryRepository)
+        this.subCategoryRepository=Container.get(SubCategoryRepository)
     }
 }

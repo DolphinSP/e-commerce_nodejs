@@ -103,10 +103,10 @@ export class ProductCategoryController extends BaseController{
       if(!isValidObjectId(uuid)) return res.status(400).json({error:'uuid invalid or not found'});
 
       try {
-        const DeleteProductCategoryAll = await this.categoryRepository.deleteCategoryOne(uuid)
-        if(!DeleteProductCategoryAll) return res.status(400).json({error:'Product not found'});
+        const DeleteProductCategoryOne = await this.categoryRepository.deleteCategoryOne(uuid)
+        if(!DeleteProductCategoryOne) return res.status(400).json({error:'Product not found'});
     
-        res.status(200).json({ category: DeleteProductCategoryAll });
+        res.status(200).json({ category: DeleteProductCategoryOne });
       } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Server Error" });
